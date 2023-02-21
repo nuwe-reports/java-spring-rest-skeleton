@@ -1,12 +1,13 @@
-<img align="left"  width="150" height="150" src=".github/rviewer_logo--dark.png" />
+<div align="center">
+  <img align="center"  width="auto" height="auto" src="https://nuwe.io/images/Group-3-3.png" />
+  <br/>
 
-## Rviewer skeleton: Java, Spring & PostgreSQL
-
-[![Twitter](https://img.shields.io/badge/rviewer__-%231DA1F2.svg?style=for-the-badge&logo=Twitter&logoColor=white)](https://twitter.com/Rviewer_/)
-
-[![Rviewer Discord](https://badgen.net/discord/members/VVN4ur8FaQ)](https://discord.gg/VVN4ur8FaQ)
-
-<br/>
+  <div id="user-content-toc">
+    <ul>
+      <summary><h1 style="display: inline-block;">Java & Spring</h1></summary>
+    </ul>
+  </div>
+</div>
 
 This repository is a Java skeleton with Spring & PostgreSQL designed for quickly getting started developing an API.
 Check the [Getting Started](#getting-started) for full details.
@@ -70,8 +71,8 @@ If you are having problems or need anything else, please let us know by
 
 This project is licensed with the [MIT license](LICENSE).
 
---- 
+---
 
 <p align="center">
-  Made with ❤️ by <a href="https://rviewer.io">Rviewer</a>
+  Made with ❤️ by <a href="https://rviewer.io">NUWE</a>
 </p>
