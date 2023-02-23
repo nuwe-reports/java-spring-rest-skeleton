@@ -3,7 +3,7 @@ version: '3.9'
 services:
     java-skeleton-api:
         container_name: java-skeleton-api
-        image: gradle:latest # this is due to some Mac M1 issues with Docker :_
+        image: gradle:7.4.1 # this is due to some Mac M1 issues with Docker :_
         depends_on:
             -   postgres-skeleton-db
         volumes:
