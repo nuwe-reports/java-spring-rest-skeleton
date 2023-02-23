@@ -43,11 +43,6 @@ test {
 	finalizedBy jacocoTestReport
 }
 
-jacoco {
-	toolVersion = "0.8.8"
-	reportsDirectory = file("$buildDir/reports/jacoco")
-}
-
 jacocoTestReport {
 	dependsOn test
 	reports {
