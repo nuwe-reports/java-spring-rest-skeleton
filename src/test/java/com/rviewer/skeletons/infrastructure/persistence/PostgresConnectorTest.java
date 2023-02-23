@@ -21,5 +21,6 @@ public class PostgresConnectorTest {
     public void getConnectionStatus_shouldReturn2() {
         when(jdbcTemplate.queryForObject("SELECT 1+1", Integer.class)).thenReturn(2);
         assertEquals(2, postgresConnector.getConnectionStatus());
+        assertEquals(0, 1);
     }
 }
