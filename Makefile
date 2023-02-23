@@ -9,4 +9,7 @@ up:
 test:
 	docker compose run --rm --no-deps -p "8080:8080" java-skeleton-api gradle build test jacocoTestReport
 
+sonarqube:
+	docker compose run --rm --no-deps -p "8080:8080" java-skeleton-api gradle build test jacocoTestReport sonarqube
+
 coverage: test

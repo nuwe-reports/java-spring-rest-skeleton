@@ -30,6 +30,7 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'junit:junit:4.12'
 }
 
 tasks.named('test') {
@@ -37,9 +38,6 @@ tasks.named('test') {
 }
 
 test {
-	testLogging {
-		events "PASSED", "SKIPPED", "FAILED"
-	}
 	ignoreFailures = true
 	finalizedBy jacocoTestReport
 }
