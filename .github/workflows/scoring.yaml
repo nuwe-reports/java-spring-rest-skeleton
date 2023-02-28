@@ -1,0 +1,52 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+          
+  sonarqube:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run testing suite
+        run: make coverage
+      
+      - name: Update solution
+        uses: actions/github-script@v6
+        with:
+          result-encoding: string
+          script: |
+            const fs = require('fs')
+            const DomParser = require('dom-parser')
+
+            var parser = new DomParser()
+            const assertionResults = []
+
+            const parentDir = './build/test-results/test/'
+            fs.readdirSync(parentDir).forEach((fileName) => {
+                const filePath = parentDir + fileName
+                if (fs.lstatSync(filePath).isDirectory()) {
+                    return
+                }
+                const file = fs.readFileSync(filePath)
+                const dom = parser.parseFromString(file.toString())
+                dom.getElementsByTagName("testcase").forEach((testcase) => {
+                    testName = testcase.getAttribute("name")
+                    testPassed = testcase.getElementsByTagName("failure").length === 0
+                    assertionResults.push(testPassed)
+                })
+            })
+            console.log(assertionResults)
+
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@master
+        with:
+          args: >
+            -Dsonar.projectKey=${{ github.event.repository.name }}
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          PERSONAL_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          PROJECT_ID: ${{ github.event.repository.name }}
