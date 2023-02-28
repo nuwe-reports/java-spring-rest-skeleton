@@ -15,25 +15,7 @@ jobs:
       
       - name: Update solution
         run: |
-          const fs = require('fs')
-          const DomParser = require('dom-parser')
-          var parser = new DomParser()
-          const assertionResults = []
-          const parentDir = './build/test-results/test/'
-          fs.readdirSync(parentDir).forEach((fileName) => {
-              const filePath = parentDir + fileName
-              if (fs.lstatSync(filePath).isDirectory()) {
-                  return
-              }
-              const file = fs.readFileSync(filePath)
-              const dom = parser.parseFromString(file.toString())
-              dom.getElementsByTagName("testcase").forEach((testcase) => {
-                  testName = testcase.getAttribute("name")
-                  testPassed = testcase.getElementsByTagName("failure").length === 0
-                  assertionResults.push(testPassed)
-              })
-          })
-          console.log(assertionResults)
+          console.log(why failed?)
 
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@master
