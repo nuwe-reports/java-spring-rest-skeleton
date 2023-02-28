@@ -16,11 +16,9 @@ jobs:
       - name: Update solution
         run: |
           const fs = require('fs')
-          const DomParser = require('dom-parser');
-
+          const DomParser = require('dom-parser')
           var parser = new DomParser()
           const assertionResults = []
-
           const parentDir = './build/test-results/test/'
           fs.readdirSync(parentDir).forEach((fileName) => {
               const filePath = parentDir + fileName
